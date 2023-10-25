@@ -6,23 +6,6 @@ import Footer from './Footer';
 import { useEffect, useState } from 'react';
 
 function App() {
-  /* const [items, setItems] = useState([
-    {
-      id: 1,
-      checked: false,
-      item: "Bread"
-    },
-    {
-      id: 2,
-      checked: false,
-      item: "Milk"
-    },
-    {
-      id: 3,
-      checked: false,
-      item: "Butter"
-    }
-  ]); */
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('todolist')) || []);
   const [newItem, setNewItem] = useState('');
   const [search, setSearch] = useState('');
