@@ -11,12 +11,14 @@ const LineItem = ({ item, handleCheck, handleDelete }) => {
             <label
                 style={(item.checked) ? { textDecoration: 'line-through' } : null}
                 onDoubleClick={() => handleCheck(item.id)}
-            >{item.description}</label>
+            >
+                {item.item}
+            </label>
             <FaTrashAlt
                 onClick={() => handleDelete(item.id)}
                 role="button"
                 tabIndex="0"
-                aria-label={`Delete ${item.description}`}
+                aria-label={`Delete ${item.item}`}
             />
         </li>
     );

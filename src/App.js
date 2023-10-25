@@ -3,50 +3,49 @@ import SearchItem from './SearchItem';
 import AddItem from './AddItem';
 import Content from './Content';
 import Footer from './Footer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const [items, setItems] = useState([
+  /* const [items, setItems] = useState([
     {
       id: 1,
       checked: false,
-      description: "Bread"
+      item: "Bread"
     },
     {
       id: 2,
       checked: false,
-      description: "Milk"
+      item: "Milk"
     },
     {
       id: 3,
       checked: false,
-      description: "Butter"
+      item: "Butter"
     }
-  ]);
-  // const [items, setItems] = useState(JSON.parse(localStorage.getItem('todolist')));
-  const [newItem, setNewItem] = useState('')
-  const [search, setSearch] = useState('')
+  ]); */
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem('todolist')) || []);
+  const [newItem, setNewItem] = useState('');
+  const [search, setSearch] = useState('');
 
-  const setAndSaveItems = (newItems) => {
-    setItems(newItems);
-    localStorage.setItem('todolist', JSON.stringify(newItems));
-  }
+  useEffect(() => {
+    localStorage.setItem('todolist', JSON.stringify(items));
+  }, [items]);
 
   const addItem = (item) => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
     const myNewItem = { id, checked: false, item };
     const listItems = [...items, myNewItem];
-    setAndSaveItems(listItems);
+    setItems(listItems);
   }
 
   const handleCheck = (id) => {
     const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
-    setAndSaveItems(listItems);
+    setItems(listItems);
   }
 
   const handleDelete = (id) => {
     const listItems = items.filter((item) => item.id !== id);
-    setAndSaveItems(listItems);
+    setItems(listItems);
   }
 
   const handleSubmit = (e) => {
@@ -69,7 +68,7 @@ function App() {
         setSearch={setSearch}
       />
       <Content
-        items={items.filter(item => ((item.description).toLowerCase()).includes(search.toLowerCase()))}
+        items={items.filter(item => ((item.item).toLowerCase()).includes(search.toLowerCase()))}
         handleCheck={handleCheck}
         handleDelete={handleDelete}
       />
