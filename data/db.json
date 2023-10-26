@@ -1,19 +1,19 @@
 {
-    "items": [
-        {
-            "id": 1,
-            "checked": false,
-            "item": "Bread"
-        },
-        {
-            "id": 2,
-            "checked": false,
-            "item": "Milk"
-        },
-        {
-            "id": 3,
-            "checked": false,
-            "item": "Butter"
-        }
-    ]
+  "items": [
+    {
+      "id": 1,
+      "checked": false,
+      "item": "Bread"
+    },
+    {
+      "id": 2,
+      "checked": false,
+      "item": "Milk"
+    },
+    {
+      "id": 3,
+      "checked": false,
+      "item": "Butter"
+    }
+  ]
 }
